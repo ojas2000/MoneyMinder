@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style_budget.css">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+    <div class="heading">
+     </div>
+     <div class="catigories">
+        <div class="grey_box">
+            <div class="img1">
+
+            </div>
+            <h2> Groceries </h2>
+            <h3 id="Groceries_price"> ₹ 3000</h3>
+        </div>
+        <div class="grey_box">
+            <div class="img2">
+
+            </div>
+            <h2> Truck </h2>
+            <h3 id="Truck_price"> ₹ 3000</h3>
+        </div>
+        <div class="grey_box">
+            <div class="img3">
+
+            </div>
+            <h2> Micellaneous </h2>
+            <h3 id="Micellaneous_price"> ₹ 3000 </h3>
+        </div>
+        <div class="grey_box">
+            <div class="img4">
+
+            </div>
+            <h2> Housing </h2>
+            <h3 id="Housing_price"> ₹ 3000</h3>
+        </div>
+     </div>
+
+     <div class="box_budget">
+        <h2 id="budget_dia">
+            Youre Doing Good so far
+        </h2>
+
+        <h3 id="total_spent">
+            total spent :- 
+        </h3>
+        <h3 id="daily_budget">
+            total spent :- 
+        </h3>
+
+
+     </div>
+    
+</body>
+
+<script >
+    
+    var house = 2000;
+    var micc = 3000;
+    var food = 3000;
+    var car = 3000;
+    var budget = 30000;
+
+
+    var spent = micc + food + car + house;
+    var date = new Date().getDate();
+
+
+
+    console.log(date);
+    if(spent  > budget/30*date)
+    {
+        document.getElementById("budget_dia").innerHTML = "Reduce spending for the rest of the Month";
+    }
+    else{
+        document.getElementById("budget_dia").innerHTML = "Youre Doing Good so far";
+    }
+
+    document.getElementById("daily_budget").innerHTML = "daily_budget :- ₹ " + budget/30;
+    document.getElementById("total_spent").innerHTML = "total spent :- ₹ " + spent;
+    document.getElementById("Groceries_price").innerHTML = "₹ " + food;
+    document.getElementById("Micellaneous_price").innerHTML = "₹ " + micc;
+    document.getElementById("Housing_price").innerHTML = "₹ " + house;
+    document.getElementById("Truck_price").innerHTML = "₹ " + car;
+</script>
+</html>

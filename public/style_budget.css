@@ -1,0 +1,104 @@
+@import url('https://fonts.googleapis.com/css2?family=Share&display=swap');
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box; 
+    font-family: 'Share', sans-serif;
+}
+body{
+    display: flex;
+    justify-content: center;
+    background-color: #e6e6e6;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 7.5vw;
+}
+
+.heading{
+    background-image: url("MoneyMinder.png");
+    height:calc(85vw / 4.4);
+    width: 85%;
+    background-size: contain;
+    border-radius: 5%;
+}
+
+.catigories{
+    margin-top:1.5rem;
+    display: grid;
+    grid-template-columns: repeat(2,calc(75vw / 2));
+    grid-template-rows: repeat(2,calc(75vw / 2));
+    gap: calc(10vw / 2);
+}
+
+.grey_box{
+    background-color: white;
+    border-radius: 4%;
+    box-shadow: 0px 0px 0px 2.1px rgba(0, 0, 0, 0.195);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+}
+
+.img1{
+    background-image: url(groceries.png);
+    width: 60%;
+    height: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.img2{
+    background-image: url(truck.png);
+    width: 80%;
+    height: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.img3{
+    background-image: url(miccelaneous.png);
+    width: 60%;
+    height: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+.img4{
+    background-image: url(house.png);
+    width: 60%;
+    height: 10rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+
+}
+
+h2{
+    padding: .1rem;
+    font-size: 6vw;
+}
+h3{
+    padding: .1rem;
+    padding-bottom: .3rem;
+    font-size: 3vw;
+    display: block;
+}
+
+
+.box_budget{
+    width: 80%;
+
+    margin-top: 1.5rem;
+    background-color: white;
+    box-shadow: 0px 0px 0px 2.1px rgba(0, 0, 0, 0.195);
+    border-radius: 2vw;
+    padding: .5rem;
+}
+
+#total_spent{
+    margin-top: .5rem;
+}
