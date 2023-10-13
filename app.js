@@ -3,6 +3,7 @@ const express = require("express");
 const multer = require("multer"); // Middleware for handling file uploads
 const upload = multer(); // Create an instance of multer
 const app = express();
+const port = 3000;
 
 app.use(express.json());
 
@@ -31,8 +32,16 @@ app.post("/parse-receipt", upload.single("input"), async (req, res) => {
         );
         apiResponse.then((resp) => {
             // print a string summary
+            var array = [
+                resp.document.inference.prediction.category.value.toString(),
+                resp.document.inference.prediction.date.value.toString(),
+                resp.document.inference.prediction.totalAmount.value.toString(),
+                resp.document.inference.prediction.supplierName.value,
+                resp.document.inference.prediction.documentType.value
+            ];
+            console.log("Array:", array); 
             console.log(resp.document.toString());
-            res.json(apiResponse);
+            res.send(array); // Send the array as a response to the client
         });
     } catch (error) {
         console.error("An error occurred:", error);
@@ -40,11 +49,6 @@ app.post("/parse-receipt", upload.single("input"), async (req, res) => {
     }
 });
 
-const express = require("express");
-const PORT = process.env.PORT || 3030;
-
-// your code
-
-app.listen(PORT, () => {
-  console.log(`server started on port ${PORT}`);
+app.listen(port, () => {
+    console.log(`Server is running at http://localhost:${port}`);
 });

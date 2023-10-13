@@ -15,6 +15,7 @@ body{
     margin-bottom: 33vw;
 }
 
+
 .heading{
     background-image: url("images/MoneyMinder.png");
     height:calc(85vw / 4.4);
@@ -33,7 +34,7 @@ body{
 path {
     fill: #e6e6e6;
     stroke: rgba(0, 0, 0, 0.181);
-    stroke-width: 0px !important;
+    stroke-width: 5px;
     stroke-linejoin: round;
     transition: all .2s ease-in-out;
   }

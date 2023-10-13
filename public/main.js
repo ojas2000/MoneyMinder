@@ -25,13 +25,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
     uploadForm.addEventListener("submit", async (e) => {
         e.preventDefault();
-
         const formData = new FormData(uploadForm);
         formData.append("file_path", fileInput.files[0].name); // Set the file_path property to the name of the selected file
-        
+
         const response = await fetch("/parse-receipt", {
             method: "POST",
             body: formData,
+            mode: 'no-cors'
         });
 
         if (response.ok) {
@@ -39,6 +39,9 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(typeof response);
             const data = await response.json();
             console.log(data, "data recieved");
+            console.log(typeof data);
+            // Display the parsed result in the "result" element
+            resultDisplay.textContent = data[0] + ", " + data[1] + ", " + data[2] + ", " + data[3] + ", " + data[4];
         } else {
             resultDisplay.textContent = "An error occurred.";
         }

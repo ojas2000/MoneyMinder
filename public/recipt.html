@@ -19,12 +19,12 @@
       <h3 class="price">
         ₹ 340
       </h3>
-      <h3 class="items">
-        8 items
+      <h3 class="payment_method">
+        Cheque
       </h3>
-      <h1000>
-        image
-      </h1000>
+      <h3 class="company">
+        Fortis
+      </h3>
     </div>
       <div class="box" id="box1" onclick="moreinfo(box1)">
         <div class="flex">
@@ -35,8 +35,11 @@
         <h3 class="price">
           ₹ 340
         </h3>
-        <h3 class="items">
-          8 items
+        <h3 class="payment_method">
+          Cheque
+        </h3>
+        <h3 class="company">
+          Fortis
         </h3>
       </div>
       <div class="box" id="box2"  onclick="moreinfo(box2)">
@@ -48,8 +51,11 @@
         <h3 class="price">
           ₹ 340
         </h3>
-        <h3 class="items">
-          8 items
+        <h3 class="payment_method">
+          Cheque
+        </h3>
+        <h3 class="company">
+          Fortis
         </h3>
       </div>
       <div class="box" id="box3" onclick="moreinfo(box3)">
@@ -61,8 +67,11 @@
         <h3 class="price">
           ₹ 340
         </h3>
-        <h3 class="items">
-          8 items
+        <h3 class="payment_method">
+          Cheque
+        </h3>
+        <h3 class="company">
+          Fortis
         </h3>
       </div>
      
@@ -72,7 +81,7 @@
     <div class="navigator">
       <a href="recipt.html"><div class="recipt_nav active"></div></a>
       <a href="index.html"><div class="budget_nav"></div></a>
-      <a href=""><div class="scan_nav"></div></a>
+      <a href="scan.html"><div class="scan_nav"></div></a>
       <a href=""><div class="group_nav"></div></a>
       <a href=""><div class="user_nav"></div></a>
     </div>
@@ -83,18 +92,20 @@
       var type = a.querySelector('.flex').querySelector('.type').innerHTML;
       var date = a.querySelector('.flex').querySelector('.date').innerHTML;
       var price = a.querySelector('.price').innerHTML.trim();
-      var items = a.querySelector('.items').innerHTML.trim();
+      var pm = a.querySelector('.payment_method').innerHTML.trim();
+      var comp = a.querySelector('.company').innerHTML.trim();
 
       localStorage.setItem("type", type);
       localStorage.setItem("date", date);
       localStorage.setItem("price", price);
-      localStorage.setItem("items", items);
+      localStorage.setItem("payment_method", pm);
+      localStorage.setItem("company", comp);
       localStorage.setItem("image_name", a.id);
 
       console.log(localStorage.getItem("type"));
       console.log(localStorage.getItem("date"));
       console.log(localStorage.getItem("price"));
-      console.log(localStorage.getItem("items"));
+      console.log(localStorage.getItem("payment_method"));
       console.log(localStorage.getItem("image_name"));
 
       window.location.replace("receipt_info.html");
