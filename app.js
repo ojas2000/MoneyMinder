@@ -3,7 +3,6 @@ const express = require("express");
 const multer = require("multer"); // Middleware for handling file uploads
 const upload = multer(); // Create an instance of multer
 const app = express();
-const port = 5500;
 
 app.use(express.json());
 
@@ -41,6 +40,11 @@ app.post("/parse-receipt", upload.single("input"), async (req, res) => {
     }
 });
 
-app.listen(port, () => {
-    console.log(`Server is running at http://localhost:${port}`);
+const express = require("express");
+const PORT = process.env.PORT || 3030;
+
+// your code
+
+app.listen(PORT, () => {
+  console.log(`server started on port ${PORT}`);
 });

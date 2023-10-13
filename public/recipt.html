@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="stylesheet" href="style_receipt.css" />
+    <link rel="stylesheet" href="navigator.css" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  </head>
+  <body>
+    <div class="heading"></div>
+    <h1 id="head_text">Receipts</h1>
+    <div class="box" id="box" onclick="moreinfo(box)">
+      <div class="flex">
+        <h2 class="type">Food</h1>
+        <h2 class="date">18 July</h1>
+      </div>
+      <div class="small_gap"></div>
+      <h3 class="price">
+        ₹ 340
+      </h3>
+      <h3 class="items">
+        8 items
+      </h3>
+      <h1000>
+        image
+      </h1000>
+    </div>
+      <div class="box" id="box1" onclick="moreinfo(box1)">
+        <div class="flex">
+          <h2 class="type">Food</h1>
+          <h2 class="date">18 July</h1>
+        </div>
+        <div class="small_gap"></div>
+        <h3 class="price">
+          ₹ 340
+        </h3>
+        <h3 class="items">
+          8 items
+        </h3>
+      </div>
+      <div class="box" id="box2"  onclick="moreinfo(box2)">
+        <div class="flex">
+          <h2 class="type">Food</h1>
+          <h2 class="date">18 July</h1>
+        </div>
+        <div class="small_gap"></div>
+        <h3 class="price">
+          ₹ 340
+        </h3>
+        <h3 class="items">
+          8 items
+        </h3>
+      </div>
+      <div class="box" id="box3" onclick="moreinfo(box3)">
+        <div class="flex">
+          <h2 class="type">Food</h1>
+          <h2 class="date">18 July</h1>
+        </div>
+        <div class="small_gap"></div>
+        <h3 class="price">
+          ₹ 340
+        </h3>
+        <h3 class="items">
+          8 items
+        </h3>
+      </div>
+     
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="svg_nav">
+        <path id="path_nav" fill="#e6e6e6" fill-opacity="1" d="M0,192L48,208C96,224,192,256,288,240C384,224,480,160,576,117.3C672,75,768,53,864,58.7C960,64,1056,96,1152,128C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+      </svg>
+    <div class="navigator">
+      <a href="recipt.html"><div class="recipt_nav active"></div></a>
+      <a href="index.html"><div class="budget_nav"></div></a>
+      <a href=""><div class="scan_nav"></div></a>
+      <a href=""><div class="group_nav"></div></a>
+      <a href=""><div class="user_nav"></div></a>
+    </div>
+  </body>
+  <script>
+    function moreinfo(a){
+      console.log(a);
+      var type = a.querySelector('.flex').querySelector('.type').innerHTML;
+      var date = a.querySelector('.flex').querySelector('.date').innerHTML;
+      var price = a.querySelector('.price').innerHTML.trim();
+      var items = a.querySelector('.items').innerHTML.trim();
+
+      localStorage.setItem("type", type);
+      localStorage.setItem("date", date);
+      localStorage.setItem("price", price);
+      localStorage.setItem("items", items);
+      localStorage.setItem("image_name", a.id);
+
+      console.log(localStorage.getItem("type"));
+      console.log(localStorage.getItem("date"));
+      console.log(localStorage.getItem("price"));
+      console.log(localStorage.getItem("items"));
+      console.log(localStorage.getItem("image_name"));
+
+      window.location.replace("receipt_info.html");
+    }
+  </script>
+
+
+  
+  <script>
+    // navbar script
+    $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 18) {
+        document.getElementById("path_nav").style= 'stroke-width:0px';
+    }
+    else{
+        document.getElementById("path_nav").style= 'stroke-width:5px';
+    }
+    });
+  </script>
+</html>

@@ -3,23 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <link rel="stylesheet" href="style_budget.css">
+    <link rel="stylesheet" href="navigator.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
 </head>
 <body>
     <div class="heading">
-     </div>
-     <div class="catigories">
+    </div>
+    <div class="catigories">
         <div class="grey_box">
             <div class="img1">
-
             </div>
+
             <h2> Groceries </h2>
             <h3 id="Groceries_price"> ₹ 3000</h3>
         </div>
         <div class="grey_box">
             <div class="img2">
-
             </div>
+
             <h2> Truck </h2>
             <h3 id="Truck_price"> ₹ 3000</h3>
         </div>
@@ -37,9 +39,9 @@
             <h2> Housing </h2>
             <h3 id="Housing_price"> ₹ 3000</h3>
         </div>
-     </div>
+        </div>
 
-     <div class="box_budget">
+        <div class="box_budget">
         <h2 id="budget_dia">
             Youre Doing Good so far
         </h2>
@@ -50,9 +52,34 @@
         <h3 id="daily_budget">
             total spent :- 
         </h3>
+        </div>
+    </div>
+
+    <!-- pi chart svg -->
+    <!--
+    <figure>
+        <figcaption>SVG PIE Chart with CSS animation</figcaption>
+          <svg class="svg_pi" viewBox="0 0 63.6619772368 63.6619772368">
+              <circle class="pie1" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
+              <circle class="pie2" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
+              <circle class="pie3" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
+              <circle class="pie4" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
+        </svg>
+    </figure>
+    -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="svg_nav">
+        <path id="path_nav" fill="#e6e6e6" fill-opacity="1" d="M0,192L48,208C96,224,192,256,288,240C384,224,480,160,576,117.3C672,75,768,53,864,58.7C960,64,1056,96,1152,128C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
+    </svg>
 
 
-     </div>
+    <div class="navigator">
+        <a href="recipt.html"><div class="recipt_nav"></div></a>
+        <a href=""><div class="budget_nav active"></div></a>
+        <a href=""><div class="scan_nav"></div></a>
+        <a href=""><div class="group_nav"></div></a>
+        <a href=""><div class="user_nav"></div></a>
+    </div>
     
 </body>
 
@@ -85,5 +112,20 @@
     document.getElementById("Micellaneous_price").innerHTML = "₹ " + micc;
     document.getElementById("Housing_price").innerHTML = "₹ " + house;
     document.getElementById("Truck_price").innerHTML = "₹ " + car;
+
+
+
 </script>
+
+<script>
+     // navbar script
+    $(window).scroll(function() {
+    if($(window).scrollTop() + $(window).height() > $(document).height() - 18) {
+        document.getElementById("path_nav").style= 'stroke-width:0px';
+    }
+    else{
+        document.getElementById("path_nav").style= 'stroke-width:9px';
+    }
+    });
+  </script>
 </html>

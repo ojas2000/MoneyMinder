@@ -39,8 +39,6 @@ document.addEventListener("DOMContentLoaded", () => {
             console.log(typeof response);
             const data = await response.json();
             console.log(data, "data recieved");
-            // Display the parsed result in the "result" element
-            resultDisplay.textContent = data.ToString();
         } else {
             resultDisplay.textContent = "An error occurred.";
         }
