@@ -12,7 +12,7 @@ body{
     flex-direction: column;
     align-items: center;
     margin-top: 7.5vw;
-    margin-bottom: 33vw;
+    margin-bottom: 2vw;
 }
 
 #head_text{
@@ -65,7 +65,7 @@ form{
 }
 
 img{
-    height: 142.11vw;
+    height: 60vh;
     width: 80vw;
 }
 
