@@ -40,8 +40,16 @@ document.addEventListener("DOMContentLoaded", () => {
             const data = await response.json();
             console.log(data, "data recieved");
             console.log(typeof data);
-            // Display the parsed result in the "result" element
-            resultDisplay.textContent = data[0] + ", " + data[1] + ", " + data[2] + ", " + data[3] + ", " + data[4];
+            
+            
+            localStorage.setItem("data1",data[0]);
+            localStorage.setItem("data2",data[1]);
+            localStorage.setItem("data3",data[2]);
+            localStorage.setItem("data4",data[3]);
+            localStorage.setItem("data5",data[4]);
+            localStorage.setItem("rec",1);
+
+            window.location = "index.html";
         } else {
             resultDisplay.textContent = "An error occurred.";
         }

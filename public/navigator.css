@@ -9,6 +9,7 @@
     padding-bottom: 1rem;
     z-index: 100;
     background-color: #e6e6e6;
+    left: 0;
 }
 
 .navigator > a > div{

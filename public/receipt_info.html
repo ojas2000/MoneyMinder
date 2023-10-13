@@ -43,7 +43,7 @@
       <a href="recipt.html"><div class="recipt_nav active"></div></a>
       <a href="index.html"><div class="budget_nav"></div></a>
       <a href="scan.html"><div class="scan_nav"></div></a>
-      <a href=""><div class="group_nav"></div></a>
+      <a href="group.html"><div class="group_nav"></div></a>
       <a href=""><div class="user_nav"></div></a>
     </div>
   </body>
@@ -53,9 +53,11 @@
 
     document.getElementById("type").innerHTML = localStorage.getItem("type");
     document.getElementById("price").innerHTML = localStorage.getItem("price");
-    document.getElementById("payment_method").innerHTML =localStorage.getItem("payment_method");
+    document.getElementById("payment_method").innerHTML =
+      localStorage.getItem("payment_method");
     document.getElementById("date").innerHTML = localStorage.getItem("date");
-    document.getElementById("company_name").innerHTML = localStorage.getItem("company");
+    document.getElementById("company_name").innerHTML =
+      localStorage.getItem("company");
 
     var modal = document.getElementById("myModal");
 

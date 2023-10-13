@@ -50,23 +50,10 @@
             total spent :- 
         </h3>
         <h3 id="daily_budget">
-            total spent :- 
+            daily budget :- 
         </h3>
         </div>
     </div>
-
-    <!-- pi chart svg -->
-    <!--
-    <figure>
-        <figcaption>SVG PIE Chart with CSS animation</figcaption>
-          <svg class="svg_pi" viewBox="0 0 63.6619772368 63.6619772368">
-              <circle class="pie1" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
-              <circle class="pie2" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
-              <circle class="pie3" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
-              <circle class="pie4" cx="31.8309886184" cy="31.8309886184" r="15.9154943092"/>
-        </svg>
-    </figure>
-    -->
 
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1440 320" class="svg_nav">
         <path id="path_nav" fill="#e6e6e6" fill-opacity="1" d="M0,192L48,208C96,224,192,256,288,240C384,224,480,160,576,117.3C672,75,768,53,864,58.7C960,64,1056,96,1152,128C1248,160,1344,192,1392,208L1440,224L1440,320L1392,320C1344,320,1248,320,1152,320C1056,320,960,320,864,320C768,320,672,320,576,320C480,320,384,320,288,320C192,320,96,320,48,320L0,320Z"></path>
@@ -77,19 +64,115 @@
         <a href="recipt.html"><div class="recipt_nav"></div></a>
         <a href=""><div class="budget_nav active"></div></a>
         <a href="scan.html"><div class="scan_nav"></div></a>
-        <a href=""><div class="group_nav"></div></a>
+        <a href="group.html"><div class="group_nav"></div></a>
         <a href=""><div class="user_nav"></div></a>
     </div>
     
 </body>
 
-<script >
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.5.0/firebase-app.js";
+
+const firebaseConfig = {
+  apiKey: "AIzaSyCMR3PH7WmEAGIh8FUP_3ZpVrkbtDbjFgU",
+  authDomain: "shis-310409.firebaseapp.com",
+  projectId: "shis-310409",
+  storageBucket: "shis-310409.appspot.com",
+  messagingSenderId: "1070954929812",
+  appId: "1:1070954929812:web:51cafb45f6f6ebaf00de81",
+};
+
+const app = initializeApp(firebaseConfig);
+
+import {
+  getFirestore,
+  doc,
+  getDoc,
+  setDoc,
+  collection,
+  addDoc,
+  updateDoc,
+  deleteDoc,
+  deleteField,
+} from "https://www.gstatic.com/firebasejs/10.5.0/firebase-firestore.js";
+
+const db = getFirestore();
+
+var userName = localStorage.getItem("user");
+
+if(userName == null)
+{
+    window.location="login.html";
+}
+
+if(localStorage.getItem("rec") == 1){
+if(localStorage.getItem("data1") != null || localStorage.getItem("data1") != "")
+    {
+    console.log(localStorage.getItem("data1"));
+    console.log(localStorage.getItem("data2"));
+    console.log(localStorage.getItem("data3"));
+    console.log(localStorage.getItem("data4"));
+    console.log(localStorage.getItem("data5"));
+    const docSnap = await getDoc(doc(db, userName, "Credentials"));
+    var num;
+    var house;
+    var transport;
+    var food;
+    var misc;
+    if (docSnap.exists()) {
+          num = docSnap.data().NumberofItems;
+          house = docSnap.data().House;
+          transport = docSnap.data().Transport;
+          food = docSnap.data().Food;
+          misc = docSnap.data().Misc;
+    } 
+    const docRef = await setDoc(doc(db, userName, num.toString()), {
+        Category: localStorage.getItem("data1").toUpperCase(),
+        Date: localStorage.getItem("data2"),
+        Amount: localStorage.getItem("data3"),
+        Supplier: localStorage.getItem("data4"),
+        Document: localStorage.getItem("data5")
+          })
+            .then(() => {
+                 if(localStorage.getItem("data1") == "food"){
+                    food += parseInt(localStorage.getItem("data3"));
+                 } else if (localStorage.getItem("data1") == "accomodation"){
+                    house += parseInt(localStorage.getItem("data3"));
+                 } else if (localStorage.getItem("data1") == "transport" || localStorage.getItem("data1") == "gasoline" || localStorage.getItem("data1") == "parking"){
+                    transport += parseInt(localStorage.getItem("data3"));
+                 } else{
+                    misc += parseInt(localStorage.getItem("data3"));
+                 }  
+                localStorage.removeItem("data1");
+                localStorage.removeItem("data2");
+                localStorage.removeItem("data3");
+                localStorage.removeItem("data4");
+                localStorage.removeItem("data5");
+              console.log("User Registered");
+              localStorage.setItem("rec", 0);
+              num += 1;
+                const docRef = updateDoc(doc(db, userName, "Credentials"), {
+                    NumberofItems: num,
+                    House: house,
+                    Transport: transport,
+                    Food: food,
+                    Misc: misc
+                });
+            })
+            .catch((error) => {
+              console.log("Unsuccessful, error: " + error);
+            });
+    }
+}
+const docSnap = await getDoc(doc(db, userName, "Credentials"));
+
+if(docSnap.exists()){
     
-    var house = 2000;
-    var micc = 3000;
-    var food = 3000;
-    var car = 3000;
-    var budget = 30000;
+    var house = docSnap.data().House;
+    var micc = docSnap.data().Misc;
+    var food = docSnap.data().Food;
+    var car = docSnap.data().Transport;
+    var budget = docSnap.data().Budget;
 
 
     var spent = micc + food + car + house;
@@ -106,18 +189,28 @@
         document.getElementById("budget_dia").innerHTML = "Youre Doing Good so far";
     }
 
-    document.getElementById("daily_budget").innerHTML = "daily_budget :- ₹ " + budget/30;
+    document.getElementById("daily_budget").innerHTML = "daily budget :- ₹ " + budget/30;
     document.getElementById("total_spent").innerHTML = "total spent :- ₹ " + spent;
     document.getElementById("Groceries_price").innerHTML = "₹ " + food;
     document.getElementById("Micellaneous_price").innerHTML = "₹ " + micc;
     document.getElementById("Housing_price").innerHTML = "₹ " + house;
     document.getElementById("Truck_price").innerHTML = "₹ " + car;
+}
+
+</script>
+
+
+<script>
+
+    
+
 
 
 
 </script>
 
 <script>
+   
      // navbar script
     $(window).scroll(function() {
     if($(window).scrollTop() + $(window).height() > $(document).height() - 18) {

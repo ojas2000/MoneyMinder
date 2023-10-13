@@ -30,7 +30,7 @@
       <h2>BUDGET in inr</h2>
       <input type="text" id="budget" />
       <h2>password</h2>
-      <input type="text" id="pass" />
+      <input type="password" id="pass" />
       <button type="button" id="register_button">Sign Up</button>
     </form>
 
@@ -109,6 +109,12 @@
             emailID: email.value,
             MobileNumber: num.value,
             Budget: budget.value,
+            NumberofItems: 0,
+            House: 0,
+            Transport: 0,
+            Food: 0,
+            Misc: 0,
+            dummy: 0,
           })
             .then(() => {
               alert("User Registered");
